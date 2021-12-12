@@ -1,0 +1,22 @@
+{
+    "function": { "path": "./tool/function.js", "iniFunc": null, "args": null, "sort": "built-in-func", "params": { "inner": true }, "ini": { "isRequire": true } },
+    "loader/scriptLoader": { "path": "./loader/scriptLoader.js", "iniFunc": null, "args": null, "sort": "built-in-loader", "params": { "inner": true }, "ini": { "isRequire": true } },
+    "loader/styleLoader": { "path": "./loader/styleLoader.js", "iniFunc": null, "args": null, "sort": "built-in-loader", "params": { "inner": true }, "ini": { "isRequire": true } },
+    "$_get": { "path": "./tool/$_GET.js", "iniFunc": null, "args": null, "sort": "built-in-func", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "Timer": { "path": "./tool/Timer.js", "iniFunc": null, "args": null, "sort": "built-in-func", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "function/array": { "path": "./tool/function/ArrayFunction.js", "iniFunc": null, "args": null, "sort": "built-in-object-func", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "function/dom": { "path": "./tool/function/DomFunction.js", "iniFunc": null, "args": null, "sort": "built-in-object-func", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "function/object": { "path": "./tool/function/ObjectFunction.js", "iniFunc": null, "args": null, "sort": "built-in-object-func", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "observer/mutation": { "path": "./tool/observer/MutationObserver.js", "iniFunc": null, "args": null, "sort": "built-in-observer", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "observer/slim": { "path": "./tool/observer/ObservableSlim.js", "iniFunc": null, "args": null, "sort": "built-in-observer", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "prototype/modifier": { "path": "./tool/prototype/prototype.modifier.ini.js", "iniFunc": "default", "args": null, "sort": "built-in-prototype", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "prototype/array": { "path": "./tool/prototype/prototypeArray.js", "iniFunc": null, "args": null, "sort": "built-in-prototype", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "prototype/dom": { "path": "./tool/prototype/prototypeDom.js", "iniFunc": null, "args": null, "sort": "built-in-prototype", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "prototype/object": { "path": "./tool/prototype/prototypeObject.js", "iniFunc": null, "args": null, "sort": "built-in-prototype", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "prototype/string": { "path": "./tool/prototype/prototypeString.js", "iniFunc": null, "args": null, "sort": "built-in-prototype", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "prototype/int": { "path": "./tool/prototype/prototypeInt.js", "iniFunc": null, "args": null, "sort": "built-in-prototype", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "prototype/bool": { "path": "./tool/prototype/prototypeBool.js", "iniFunc": null, "args": null, "sort": "built-in-prototype", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "verification/custom": { "path": "./tool/verification/customVerification.js", "iniFunc": null, "args": null, "sort": "built-in-regex", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "verification/regex": { "path": "./tool/verification/regexVerification.js", "iniFunc": null, "args": null, "sort": "built-in-regex", "params": { "inner": true }, "ini": { "isRequire": false } },
+    "verification/type": { "path": "./tool/verification/typeVerification.js", "iniFunc": null, "args": null, "sort": "built-in-regex", "params": { "inner": true }, "ini": { "isRequire": false } }
+}
