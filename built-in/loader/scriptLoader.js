@@ -3,10 +3,20 @@ import { importScript } from "../tool/function.js"
 class ScriptLoader {
     loaded = {}
     baseLocation = ""
+    event = { load: [], call: [] }
 
     constructor(baseLocation) {
         this.load("./loader/scriptLoader.js", undefined, undefined, undefined, { inner: true });
         this.baseLocation = baseLocation.length == 0 || (baseLocation.substring(baseLocation.length - 1) == "/" || baseLocation.substring(baseLocation.length - 1) == "\\") ? baseLocation : baseLocation + "/"
+    }
+
+    // callback is : callback(object:Object<module:Object, ini func:Object, sort:string>)
+    addListener(event, callback) {
+        if (event == "load") {
+            this.event.load.push(callback);
+        } else if (event == "call") {
+            this.event.call.push(callback);
+        }
     }
 
     getLoaded() {
@@ -71,6 +81,10 @@ class ScriptLoader {
             }
         }
         this.loaded[href] = { "name": href.split("/")[href.split("/").length - 1], "module": module, "ini func": iniFunc != null ? { "function": { "name": iniFunc, "callback": module[iniFunc] }, "args": args.length != 0 ? args : null } : null, "sort": sort };
+
+        // event
+        this.event.load.forEach(function(callback) { callback(this.loaded[href]) })
+
         return module;
     }
 
@@ -80,14 +94,6 @@ class ScriptLoader {
             return this.load(href, iniFunc, args, sort, params)
         }.bind(this), false))
         return modules;
-    }
-
-    async reload(href, iniFunc, args) {
-
-    }
-
-    async reloads() {
-
     }
 
     sortIn(module, sortName) {
@@ -107,6 +113,9 @@ class ScriptLoader {
         if (functionCalled) {
             return this.loaded[href].module[functionCalled]
         }
+
+        // event
+        this.event.call.forEach(function(callback) { callback(this.loaded[href]) })
         return this.loaded[href].module;
     }
 

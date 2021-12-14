@@ -16,4 +16,4 @@ export function parse(type = "string") {
 }
 
 // Language: javascript
-// Path: built-in\tool\prototype\prototypeString.js
+// Path: built-in\tool\prototype\prototypeNumber.js

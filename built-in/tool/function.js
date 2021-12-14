@@ -227,6 +227,8 @@ export async function getFromFile(...array) {
     }
 };
 
+window.getFromFile = getFromFile;
+
 export async function getPathFromServer(path) {
     let div = document.createElement('div')
     div.innerHTML = await getFromFile("php/getPath.php", { method: "POST", data: path })

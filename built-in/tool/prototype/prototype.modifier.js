@@ -9,6 +9,7 @@ class ModifiedPrototype {
 
         this.createNewBibl(Object.prototype.toString.call(object()))
         object.prototype[propertyName] = value
+
         this.prototype[Object.prototype.toString.call(object()) + moduleNameForConflict] = {
             "class": object,
             "property": value
@@ -41,10 +42,29 @@ export function modifiedNewPrototype(object, propertyName, value, moduleNameForC
 export default function setModifiedPrototypeClass() {
     modifiedPrototype = new ModifiedPrototype()
     modifiedNewPrototype(Array, "asyncForEach", asyncForEach)
-
 }
 
-export async function asyncForEach(callback = () => { throw new Error("error no callback assign"); }, wait = true, timeout = 0) {
+export async function loadsPrototypeFromFile(...array) {
+    let promises = array.map(async function([fileName, funcName, name]) {
+        return loadPrototypeFromFile(fileName, funcName, name)
+    })
+    return await Promise.all(promises)
+}
+
+export async function loadPrototypeFromFile(fileName, funcName, name = undefined) {
+    const association = { prototypeArray: Array, prototypeObject: Object, prototypeString: String, prototypeFunction: Function, prototypeNumber: Number, prototypeBoolean: Boolean, prototypeRegExp: RegExp, prototypeDate: Date, prototypeError: Error, prototypeSymbol: Symbol, prototypeHTMLElement: HTMLElement }
+    if (scriptLoader == undefined) {
+        throw new Error("to use the function loadPrototypeFromFile, you must ini the built-in package")
+    }
+    if (scriptLoader.call("./tool/prototype/" + fileName + ".js") == false) {
+        await scriptLoader.load("./tool/prototype/" + fileName + ".js")
+    }
+
+    modifiedNewPrototype(association[fileName], name ? name : funcName, scriptLoader.call("./tool/prototype/" + fileName + ".js")[funcName])
+    return true;
+}
+
+async function asyncForEach(callback = () => { throw new Error("error no callback assign"); }, wait = true, timeout = 0) {
     let ret = [];
     callback = callback.bind(this)
     for (let i = 0; i < this.length; i++) {

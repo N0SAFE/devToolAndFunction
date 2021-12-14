@@ -1,5 +1,5 @@
 export default (type, value) => {
-    if (Object.prototype.toString.call(value) === '[object Object]') { return value instanceof type; }
+    if (Object.prototype.toString.call(type) === '[object Object]') { return value instanceof type; }
     switch (type) {
         case 'array':
             return Array.isArray(value);

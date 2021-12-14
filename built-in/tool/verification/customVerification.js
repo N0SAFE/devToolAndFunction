@@ -1,4 +1,5 @@
-export default (type, value) => {
+let baseRule = { minLength: 3, maxLength: 20, min: 3, max: 20, minDate: "now", maxDate: "now", value: 0, array: [] };
+export default (type, value, rule = baseRule) => {
     switch (type) {
         case 'required':
             return value !== '';
@@ -14,10 +15,6 @@ export default (type, value) => {
             return new Date(value) >= new Date(rule.minDate);
         case 'maxDate':
             return new Date(value) <= new Date(rule.maxDate);
-        case 'minCount':
-            return value.length >= rule.count;
-        case 'maxCount':
-            return value.length <= rule.count;
         case 'regex':
             return rule.regex.test(value);
         case 'custom':
@@ -27,19 +24,19 @@ export default (type, value) => {
         case 'notEqualTo':
             return value !== rule.value;
         case 'contains':
-            return rule.value.indexOf(value) > -1;
+            return rule.array.indexOf(value) > -1;
         case 'notContains':
-            return rule.value.indexOf(value) === -1;
+            return rule.array.indexOf(value) === -1;
         case 'unique':
-            return rule.value.indexOf(value) === -1;
+            return rule.array.indexOf(value) === -1;
         case 'uniqueIn':
-            return rule.value.indexOf(value) === -1;
+            return rule.array.indexOf(value) === -1;
         case 'uniqueInCollection':
-            return rule.value.indexOf(value) === -1;
+            return rule.array.indexOf(value) === -1;
         case 'uniqueInObject':
-            return rule.value.indexOf(value) === -1;
+            return rule.array.indexOf(value) === -1;
         case 'uniqueInArray':
-            return rule.value.indexOf(value) === -1;
+            return rule.array.indexOf(value) === -1;
 
         default:
             return false;

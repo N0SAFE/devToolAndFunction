@@ -1,5 +1,5 @@
-import { setScriptLoader } from "../loader/scriptLoader.js";
-import getScriptLoader from "../loader/scriptLoader.js"
+import { setScriptLoader } from "../loader/ScriptLoader.js";
+import getScriptLoader from "../loader/ScriptLoader.js"
 import { getFromFile } from "../tool/function.js"
 import ArrayFunction from "../tool/function/ArrayFunction.js"
 
@@ -100,7 +100,7 @@ export default async function ini(iniDebugTool = false, iniDevTool = false, para
     // #endregion set baseURI and baseURL
 
     // require load prototype.modifier.ini.js
-    await scriptLoader.load("./tool/prototype/prototype.modifier.ini.js", "default", undefined, undefined, { inner: true })
+    window.prototypeModifier = await scriptLoader.load("./tool/prototype/prototype.modifier.js", "default", undefined, undefined, { inner: true })
 
     // #region load module requested
 
